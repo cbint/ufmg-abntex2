@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# ufmg-abntex2
-=======
 # ufmg-abntex2
 
 Esta é uma customização do abntex2 para monografias (dissertações e teses) da UFMG.
