@@ -1,0 +1,262 @@
+%
+% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade
+% Federal de Minas Gerais (UFMG).
+%
+% This work may be distributed and/or modified under the conditions of the LaTeX
+% Project Public License, either version 1.3 of this license or (at your option)
+% any later version.  The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is Carlos Barth, carlos@cbarth.me
+%
+% Further information about abnTeX2 are available on https://github.com/abntex/abntex2
+%
+
+\ProvidesPackage{ufmg-abntex2}[2024/01/01 Criacao desta customizacao do abnTeX2]
+
+% Apenas explicitando valor padrão das margens
+\setlrmarginsandblock{3cm}{2cm}{*} % externa / interna
+\setulmarginsandblock{3cm}{2cm}{*} % superior / inferior
+\checkandfixthelayout
+
+% Espaçamento 1.5 entre linhas
+\OnehalfSpacing
+
+\usepackage{indentfirst}
+\usepackage{etoolbox}
+
+% Apenas explicitando o padrão ABNTEX2
+\setlength{\ABNTEXcitacaorecuo}{4cm}
+
+% Título das seções primárias (e.g. capítulos) - CAIXA ALTA, negrito, 12pt
+\setlength{\afterchapskip}{\baselineskip}
+\setlength{\beforechapskip}{\baselineskip}
+\renewcommand{\ABNTEXchapterfont}{\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\setboolean{ABNTEXupperchapter}{true}
+
+% Título das seções secundárias - Somente inicial maiúscula, negrito, 12pt
+%\setlength{\aftersecskip}{\baselineskip}
+%\setlength{\beforesecskip}{\baselineskip}
+\renewcommand{\ABNTEXsectionfont}{\bfseries}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\setboolean{ABNTEXuppersection}{false}
+
+% Título das seções terciárias - Somente inicial maiúscula, itálico, 12pt
+\renewcommand{\ABNTEXsubsectionfont}{\itshape}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\setboolean{ABNTEXuppersubsection}{false}
+
+% Título das seções quaternárias - Somente inicial maiúscula, regular, 12pt
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\setboolean{ABNTEXuppersubsubsection}{false}
+
+% Título das seções quinárias - Somente inicial maiúscula, regular, 12pt
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+\setboolean{ABNTEXuppersubsubsubsection}{false}
+
+% Altera o estilo de cabeçalho padrão da abntex2 para um ainda mais simples
+% (somente o número da página à direita, conforme diretrizes da UFMG).
+\makepagestyle{abntheadings}
+\makeoddhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
+\makeevenhead{abntheadings}{}{}{\ABNTEXfontereduzida\thepage}
+
+% Sumário {{{
+
+% Entradas primárias 
+% TODO: investigar. Parece que esse método gera uma complicação com o pacote
+% hyperref. Nada apareceu nos testes até aqui, contudo.
+% https://perspectivesandprotips.blogspot.com/2014/10/uppercasing-in-memoir-table-of-contents.html
+\renewcommand*{\cftchapterfont}{\bfseries\MakeTextUppercase}
+
+% Entradas secundárias
+\renewcommand{\cftsectionfont}{\bfseries}
+
+% Entradas terciárias
+\renewcommand{\cftsubsectionfont}{\normalfont\itshape}
+\renewcommand{\cftsubsectionpagefont}{\normalfont}
+
+% Entradas quaternárias
+\renewcommand{\cftsubsubsectionfont}{\normalfont}
+\renewcommand{\cftsubsubsectionpagefont}{\normalfont}
+
+% Entradas quinárias
+\renewcommand{\cftsubsubsubsectionfont}{\normalfont}
+% }}} 
+
+% Macro para armazenar nome da faculdade
+\newcommand{\imprimirfaculdade}[1]{#1}
+\newcommand{\faculdade}[1]{\renewcommand{\imprimirfaculdade}{#1}}
+
+% Macro para armazenar nome do departamento
+\newcommand{\imprimirdepartamento}[1]{#1}
+\newcommand{\departamento}[1]{\renewcommand{\imprimirdepartamento}{#1}}
+
+% Macro para armazenar o subtitulo do trabalho (titulo já está na abntex2)
+\newcommand{\imprimirsubtitulo}[1]{#1}
+\newcommand{\subtitulo}[1]{\renewcommand{\imprimirsubtitulo}{#1}}
+
+% Capa
+\renewcommand{\imprimircapa}{
+	\begin{capa}
+	\center
+	\ABNTEXchapterfont\MakeUppercase\imprimirinstituicao\\
+	\ABNTEXchapterfont\imprimirfaculdade\\
+	\ABNTEXchapterfont\imprimirdepartamento
+
+	\vspace*{3cm}
+	{\normalfont\imprimirautor}
+	
+	\vspace*{3cm}
+	\ABNTEXchapterfont\MakeUppercase\imprimirtitulo{:}
+	\ABNTEXchapterfont\MakeLowercase\imprimirsubtitulo
+	
+	\vfill
+	{\normalfont\imprimirlocal}\\
+	{\normalfont\imprimirdata}\\
+	\vspace*{1cm}
+	\end{capa}
+}
+
+% Folha de Rosto
+\renewcommand{\folhaderostocontent}{
+	\begin{center}
+
+    \vspace*{1cm}
+	{\normalfont\imprimirautor}
+
+	\vspace*{5cm}
+	\ABNTEXchapterfont\MakeUppercase\imprimirtitulo{:}
+	\ABNTEXchapterfont\MakeLowercase\imprimirsubtitulo
+
+	\vspace*{1cm}
+	\begin{adjustwidth}{8cm}{0cm}
+		\SingleSpacing
+		\normalfont\imprimirpreambulo
+
+		\vspace*{0.5cm}
+		{Orientador(a): \normalfont\imprimirorientador}
+
+		\vspace*{0.5cm}
+		% Se coorientador tiver sido definida, imprime o nome
+		\ifdefstring{\imprimircoorientador}{}{}{Coorientador(a): \normalfont\imprimircoorientador}
+	\end{adjustwidth}
+	
+	\vfill
+	{\normalfont\imprimirlocal}\\
+	{\normalfont\imprimirdata}\\
+	\vspace*{1cm}
+
+	\end{center}
+}
+
+% Redefine o ambiente "dedicatória", mantendo o que está na classe abntex2 e
+% acrescentando customizações para UFMG
+\renewenvironment{dedicatoria}[1][]{%
+   \ifthenelse{\equal{#1}{}}{%
+    \PRIVATEbookmarkthis{\dedicatorianame}
+    }{\pretextualchapter{#1}}
+	\vspace*{\fill}
+	\begin{adjustwidth}{8cm}{0cm}\em
+}{\end{adjustwidth}
+  \PRIVATEclearpageifneeded}
+
+% Redefine o ambiente "eppigrafe", mantendo o que está na classe abntex2 e
+% acrescentando customizações para UFMG
+\renewenvironment{epigrafe}[1][]{%
+	\ifthenelse{\equal{#1}{}}{%
+	\PRIVATEbookmarkthis{\epigraphname}
+	}{\pretextualchapter{#1}}
+	\vspace*{\fill}
+	\begin{adjustwidth}{4cm}{0cm}\em
+}{\end{adjustwidth}
+ \PRIVATEclearpageifneeded}
+
+% Comando para ajudar a formatar o resumo em língua vernácula.
+\newcommand{\UFMGresumolinguavernacula}[2]{
+	\renewcommand{\resumoname}{Resumo}
+	\begin{resumo}
+		\begin{otherlanguage*}{brazil} % Usa hifenização brasileira
+		{#1}
+
+		\vspace{\onelineskip}
+		\noindent
+		\textbf{Palavras-chave:} {#2}
+		\end{otherlanguage*}
+	\end{resumo}
+}
+
+% Comando para ajudar a formatar o resumo em língua vernácula (geralmente, mas não
+% necessariamente inglês).
+% #1 - conteúdo do abstract
+% #2 - palavras chave
+% #3 - idioma para hifenização (english, french, spanish...)
+% #4 - título para o resumo (Abstract, Résumé, Resumen...)
+% #5 - titulo da subseção de palavras-chave (keywords, mots-clés...)
+\newcommand{\UFMGresumolinguaestrangeira}[5]{
+	\renewcommand{\resumoname}{#4}
+	\begin{resumo}
+		\begin{otherlanguage*}{#3}
+		{#1}
+		
+		\vspace{\onelineskip}
+		\noindent
+		\textbf{#5:} {#2}
+		\end{otherlanguage*}
+	\end{resumo}
+}
+
+%-----------------------------
+% Para uso com Pandoc
+%-----------------------------
+
+% Redefine o ambiente de referências usado pelo Pandoc (CSLReferences) para
+% facilitar a integração. A maior parte desse código foi retirada do template
+% padrão para latex do pandoc 3.1.12.1.
+%
+% Os testes com \ifx são necessários porque, caso o documento não tenha
+% qualquer bibliografia, o template do pandoc não irá definir o ambiente
+% CSLReferences, nem o comando citeproc.
+%
+% O primeiro erro nos impede de usar \renewenviromment{CSLReferences}.
+% O segundo faz com que `pandoc --citeproc` retorne um erro.
+% 
+% Você pode também definir csl-refs como true no seu YAML, mas em vez de exigir
+% isso, preferi deixar o pacote mais robusto e evitar ao máximo a necessidade
+% de modificações como essa.
+%
+
+% Dummy \citeproc
+\ifx\citeproc\undefined
+\NewDocumentCommand\citeproc{}
+\fi
+
+% Dummy CSLREferences
+\ifx\CSLReferences\undefined
+\newenvironment{CSLReferences}{}
+\fi
+
+\renewenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  % Macro definida pela ABNTEX2
+  \bibsection
+  \SingleSpacing
+  \setlength{\parindent}{0pt}
+  \setlength{\parskip}{0.5cm}
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}

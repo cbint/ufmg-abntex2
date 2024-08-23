@@ -1,0 +1,170 @@
+---
+documentclass: abntex2
+classoption: 
+  - oneside
+  - openright
+  - sumario=abnt-6027-2012
+  - english
+  - brazil
+papersize: a4
+fontsize: 12pt
+
+# Usado pra satisfazer padrão PDF/A-2B
+hyperrefoptions:
+  - pdfa
+
+title-meta: Título do documento
+author-meta: Nome do autor
+subject: Assundo do documento
+keywords: 
+  - palavra chave
+  - outra palavra chave
+  - mais uma
+  - assim vai
+
+# Links disponíveis no documento serão coloridos?
+colorlinks: false
+
+# Numerar seções?
+numbersections: true
+
+# Arquivo CSL com o padrão ABNT
+csl: abnt.csl
+
+# Arquivo bibtex com a biliografia utilizada (obrigatório)
+bibliography: exemplo.bib
+
+# Configura a fonte (caso use xelatex)
+#mainfont: Linux Libertine O
+
+# Citações no texto terão links para a respectiva entrada na bibliografia
+link-citations: true
+
+# Usado para especificar o locale do estilo CSL
+# e para prencher o padrão PDFA
+lang: brazil
+
+# "utilizar um espaço de 1,5 centímetros entre os parágrafos OU empregar recuo
+# de 1,25cm à esquerda sem a linha de divisão entre eles". (p. 8)
+parindent: 1.25cm
+parskip: 0.0
+
+# Configura a fonte (caso use pdflatex)
+fontfamily: lmodern
+
+# Imprimir capa?
+capa: true
+
+# Imprimir folha de rosto?
+folhaderosto: true
+
+# Ficha catalográfica {{{ 
+#
+# Geralmente a biblioteca fornece a ficha catalográfica pronta, ou em formato
+# PDF ou em formato JPG/PNG. Se tiver recebido um PDF, aponte o caminho do
+# arquivo em fichacatalograficapdf. Se tiver recebido um arquivo de imagem,
+# aponte o caminho em fichacatalograficaimg.
+#
+# Caso fichacatalograficapdf e fichacatalograficaimg estejam ambas definidas,
+# somente fichacatalograficapdf será levada em conta
+fichacatalograficapdf: false
+
+# A imagem da ficha catalográfica será alinhada à direita inferior
+fichacatalograficaimg: fichacatalografica.jpg
+#fichacatalograficaimg: false
+
+# }}} 
+
+# PDF da Folha de aprovação
+#folhadeaprovacao: false
+folhadeaprovacao: folhaaprovacao.pdf
+#folhadeaprovacao: false
+
+# Texto de dedicatória
+dedicatoria: |
+  Dedicado à toda a comunidade de sofware livre brasileira.
+
+# Texto de agradecimento
+agradecimentos: |
+  Digite aqui seu texto de agradecimento.
+  Cuidado para não esquecer ninguém!
+
+# Texto da epígrafe
+epigrafe: |
+  Beware of bugs in the above code; 
+  I have only proved it correct, not tried it. 
+  (Donald Knuth)
+
+# Conteúdo do resumo em lĩngua vernácula
+resumo: |
+  Este é o resumo do trabalho em língua portuguesa.
+  Você precisa também definir as palavras-chave em português.
+  Elas serão impressas logo abaixo.
+  De acordo com as normas de UFMG, as palavras-chave devem ser separadas por ponto-e-vírgula e finalizadas com ponto final.
+
+# Palavras-chave em português
+# Utilize a sintaxe para arrays em YAML: [ palavra1, palavra2, palavra3 ]
+resumopalavraschave: [ primeira, segunda, terceira, palavra composta ]
+
+# Resumo em língua estrangeira
+abstract: |
+  This work aims to contribute to the community.
+
+# Palavras-chave em lingua estrangeira
+# Utilize a sintaxe para arrays em YAML: [ palavra1, palavra2, palavra3 ]
+abstractpalavraschave: [ keyword1, keyword2, keyword3 ]
+
+# Tradução para a expressão "Palavras-chave" no idioma estrangeiro escolhido
+# Keywords, Mots-clés, Palavras clave, etc.
+abstracttitulopalavraschave: Keywords
+
+# Título do resumo na lingua estrangeira (Abstract, Résumé, Resument...)
+abstracttitulo: Abstract
+
+# Idioma para hifenização do resumo em lĩngua estrangeira (english, french,
+# spanish...)
+abstractidioma: english
+
+# Imprimir lista de figuras?
+ldf: true
+
+# Imprimir lista de tabelas?
+ldt: true
+
+# Imprimir lista de abreviaturas, siglas e símbolos?
+lds: true
+
+# Defina as abreviaturas e siglas. Sintaxe YAML:
+# abreviaturasesiglas:
+#   - SIGLA: Descrição
+#   - SIGLA2: Descrição da sigla 2
+abreviaturasesiglas:
+  - A: Primeiro símbolo ou sigla
+  - B: Segundo símbolo ou sigla
+  - C: Terceiro símbolo ou sigla
+ 
+# Imprimir sumário?
+toc: true
+
+# Variáveis 
+faculdade: Faculdade de Ciências
+departamento: Departamento de Ciência
+instituicao: Universidade Federal de Ciências
+autor: Autor da Silva
+titulo: Título Completo da Obra
+subtitulo: Um subtítulo
+data: 2024
+local: Cidade do Trabalho
+orientador: Orientador de Oliveira
+coorientador: false
+
+preambulo: |
+  Tese apresentada ao Programa de Pós-graduação em Ciência 
+  da Universidade Federal de Ciências, como requisito parcial
+  à obtenção do título de Doutor em Ciências.
+
+
+nocite: |
+  @fodor1980
+
+...
