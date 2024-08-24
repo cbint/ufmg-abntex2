@@ -78,7 +78,7 @@ Abaixo faço uma breve descrição do papel de cada um dos arquivos:
 
 ## Contato
 
+Sugestões, dúvidas ou comentários:
+
 + [E-mail](mailto:carlos@cbarth.me)
 + [Site pessoal](https://cbarth.me)
-
->>>>>>> 3750948 (Initial commit.)
