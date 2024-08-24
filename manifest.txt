@@ -1,0 +1,3 @@
+ufmg-abntex2.sty
+template_ufmg.tex
+filtro_citacao.py
